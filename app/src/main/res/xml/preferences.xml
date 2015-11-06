@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <EditTextPreference
+            android:key="raw_addr"
+            android:title="IPv4 Address"
+            android:summary="The raw IP address of the Robot"
+            android:defaultValue="192.168.2.77" />
+        <EditTextPreference
+            android:key="control_addr"
+            android:title="Control Address"
+            android:summary="\@Deprecated;The full path to robotpi.php"
+            android:defaultValue="192.168.2.77/robotpi.php" />
+
+        <EditTextPreference
+            android:key="distance_addr"
+            android:title="Distance Address"
+            android:summary="\@Deprecated;The full path to where distance.php"
+            android:defaultValue="192.168.2.77/distance.php" />
+
+        <CheckBoxPreference
+            android:key="distance"
+            android:title="Get distance?"
+            android:summary="\@Deprecated;Should the distance get updated?"
+            android:defaultValue="true" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -26,31 +26,14 @@ import java.util.TimerTask;
 
 public class RemoteRobotPi extends AppCompatActivity {
 
-    public Timer timer;
-
-    private Vibrator vibrator;
-
     public static String CONTROL_URL;
     public static String DISTANCE_URL;
     public static boolean UPDATE_DISTANCE;
-
+    public Timer timer;
+    private Vibrator vibrator;
     private boolean inSettings = false;
 
     private SharedPreferences sharedPrefs;
-
-    public enum Mode {
-        FORWARD("FORWARD"), BACKWARD("BACKWARD"), LEFT("RIGHT"), RIGHT("LEFT"), ROTATE_LEFT("ROTATE_LEFT"), ROTATE_RIGHT("ROTATE_RIGHT"), STOP("RESET"), AUTO("");
-
-        private String command;
-
-        Mode(String command) {
-            this.command = command;
-        }
-
-        public String getCommand() {
-            return command;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -301,6 +284,20 @@ public class RemoteRobotPi extends AppCompatActivity {
 
         //            final TextView mTextView = (TextView) findViewById(R.id.text);
 
+    }
+
+    public enum Mode {
+        FORWARD("FORWARD"), BACKWARD("BACKWARD"), LEFT("RIGHT"), RIGHT("LEFT"), ROTATE_LEFT("ROTATE_LEFT"), ROTATE_RIGHT("ROTATE_RIGHT"), STOP("RESET"), AUTO("");
+
+        private String command;
+
+        Mode(String command) {
+            this.command = command;
+        }
+
+        public String getCommand() {
+            return command;
+        }
     }
 
 }

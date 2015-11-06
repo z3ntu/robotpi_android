@@ -14,10 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import io.github.z3ntu.remoterobot.R;
-
 import java.util.Timer;
 import java.util.TimerTask;
+
+import io.github.z3ntu.remoterobot.R;
 
 
 public class RemoteRobotPiSocket extends AppCompatActivity {

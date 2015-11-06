@@ -10,13 +10,8 @@ import java.text.DecimalFormat;
  */
 public class SeekbarListener implements SeekBar.OnSeekBarChangeListener {
 
-    public enum Side {
-        LEFT, SERVO, RIGHT
-    }
-
     private ConnectionHandler connectionHandler;
     private Side side;
-
     public SeekbarListener(ConnectionHandler connectionHandler, Side side) {
         this.connectionHandler = connectionHandler;
         this.side = side;
@@ -26,12 +21,12 @@ public class SeekbarListener implements SeekBar.OnSeekBarChangeListener {
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 //        if(!fromUser)
 //            return;
-        if(connectionHandler.isSocketActive()) {
+        if (connectionHandler.isSocketActive()) {
             Message message = null;
             String direction = "0";
             String value = "00";
 
-            if(side != Side.SERVO) {
+            if (side != Side.SERVO) {
                 if (progress < 99) {
                     direction = "B";
                     value = new DecimalFormat("00").format((100 - progress));
@@ -48,10 +43,10 @@ public class SeekbarListener implements SeekBar.OnSeekBarChangeListener {
 
             System.out.println(value);
 
-            switch(side) {
+            switch (side) {
                 case LEFT:
 //                message = Message.obtain(connectionHandler, ConnectionHandler.MessageCode.CLASS_COMMAND, 0, 0, "FL" + (progress < 10 ? "0" + progress : progress) + '\r');
-                message = Message.obtain(connectionHandler, ConnectionHandler.MessageCode.CLASS_COMMAND, 0, 0, direction + "L" + value + '\r');
+                    message = Message.obtain(connectionHandler, ConnectionHandler.MessageCode.CLASS_COMMAND, 0, 0, direction + "L" + value + '\r');
                     break;
                 case RIGHT:
 //                    message = Message.obtain(connectionHandler, ConnectionHandler.MessageCode.CLASS_COMMAND, 0, 0, "FR" + (progress < 10 ? "0" + progress : progress) + '\r');
@@ -77,5 +72,9 @@ public class SeekbarListener implements SeekBar.OnSeekBarChangeListener {
 //            System.out.println("reset to 100");
 //            seekBar.setProgress(100);
 //        }
+    }
+
+    public enum Side {
+        LEFT, SERVO, RIGHT
     }
 }

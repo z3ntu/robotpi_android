@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RemoteRobot</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="reset_all">Alle zurücksetzen</string>
+    <string name="reset_speed">Geschwindigkeit zurücksetzen</string>
+</resources>

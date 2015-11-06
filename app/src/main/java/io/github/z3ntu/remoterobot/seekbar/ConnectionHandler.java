@@ -32,7 +32,7 @@ public class ConnectionHandler extends Handler {
     @Override
     public void handleMessage(Message msg) {
         message = msg;
-        super.handleMessage(msg);    //To change body of overridden methods use File | Settings | File Templates.
+        super.handleMessage(msg);
         if (message.what != MessageCode.CLASS_CONNECTION) {
             sendMessageToServer();
         } else {
@@ -49,7 +49,7 @@ public class ConnectionHandler extends Handler {
     }
 
     private void sendMessageToServer() {
-        if(printwriter != null) {
+        if (printwriter != null) {
             printwriter.println(message.obj);
         } else {
             new ErrorDialogFragment().setText("There is no connection!").show(fragmentManager, null);
@@ -68,7 +68,7 @@ public class ConnectionHandler extends Handler {
         } catch (IOException e) {
             new ErrorDialogFragment().setText("Error while connecting to the socket!").show(fragmentManager, null);
             socketActive = false;
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
@@ -78,20 +78,20 @@ public class ConnectionHandler extends Handler {
         try {
             client.close();
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         socketActive = false;
         quit();
+    }
+
+    public boolean isSocketActive() {
+        return socketActive;
     }
 
     public static class MessageCode {
         public static int CLASS_CONNECTION = 0;
         public static int CONNECTION_CONNECT = 1;
         public static int CLASS_COMMAND = 2;
-    }
-
-    public boolean isSocketActive(){
-        return socketActive;
     }
 
 }

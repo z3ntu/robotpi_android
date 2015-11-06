@@ -13,11 +13,7 @@ public class ButtonListener implements View.OnClickListener {
     private VerticalSeekbar sr;
     private SeekBar servo;
 
-    public enum Type {
-        ALL, SPEED
-    }
-
-    public ButtonListener(VerticalSeekbar sl, VerticalSeekbar sr, SeekBar servo, Type type){
+    public ButtonListener(VerticalSeekbar sl, VerticalSeekbar sr, SeekBar servo, Type type) {
         this.sl = sl;
         this.sr = sr;
         this.servo = servo;
@@ -26,7 +22,7 @@ public class ButtonListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch(type){
+        switch (type) {
             case ALL:
                 sl.setProgress(100);
                 sr.setProgress(100);
@@ -37,5 +33,9 @@ public class ButtonListener implements View.OnClickListener {
                 sr.setProgress(100);
                 break;
         }
+    }
+
+    public enum Type {
+        ALL, SPEED
     }
 }

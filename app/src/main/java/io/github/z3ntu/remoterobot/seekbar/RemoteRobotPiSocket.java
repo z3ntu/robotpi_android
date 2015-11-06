@@ -43,15 +43,12 @@ public class RemoteRobotPiSocket extends AppCompatActivity {
 
         setContentView(R.layout.activity_sliders);
 
-
-/*
-        final Button auto = (Button) findViewById(R.id.auto);
+        /*final Button auto = (Button) findViewById(R.id.auto);
         auto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 request(Side.AUTO);
             }
         });*/
-
 
         connectionHandlerThread = new HandlerThread("ConnectionThread");
         connectionHandlerThread.start();
@@ -64,24 +61,8 @@ public class RemoteRobotPiSocket extends AppCompatActivity {
 
         connectionHandler.sendMessage(connect_message);
 
-//        SeekbarListener seekbarListener = new SeekbarListener(connectionHandler);
-
         VerticalSeekbar sr = (VerticalSeekbar) findViewById(R.id.rightSeekBar);
         sr.setOnSeekBarChangeListener(new SeekbarListener(connectionHandler, SeekbarListener.Side.RIGHT));
-
-         /*new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(connectionHandler.isSocketActive()) {
-                    Message message = Message.obtain(connectionHandler, ConnectionHandler.MessageCode.CLASS_COMMAND, 0, 0, "FR" + (progress < 10 ? "0" + progress : progress) + '\r');
-                    connectionHandler.sendMessage(message);
-                }
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) { }
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) { }
-        }*/
 
         VerticalSeekbar sl = (VerticalSeekbar) findViewById(R.id.leftSeekBar);
         sl.setOnSeekBarChangeListener(new SeekbarListener(connectionHandler, SeekbarListener.Side.LEFT));
@@ -100,26 +81,15 @@ public class RemoteRobotPiSocket extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_remote_robot_pi, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-//            final TextView mTextView = (TextView) findViewById(R.id.text);
-//            Toast.makeText(getApplicationContext(),
-//                    "Should open settings! ;)",
-//                    Toast.LENGTH_LONG).show();
             showSettingsDialog();
-            //TODO: SHOW PREFERENCES
             return true;
         }
 
@@ -144,9 +114,6 @@ public class RemoteRobotPiSocket extends AppCompatActivity {
 
         mFragmentTransaction.replace(android.R.id.content, mSettingsFragment);
 
-/*        mFragmentTransaction.setCustomAnimations(R.anim.animation_test, 0);
-        mFragmentTransaction.show(mSettingsFragment);*/
-//        mFragmentTransaction.add(mSettingsFragment, "settings");
         mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
         inSettings = true;
@@ -174,15 +141,8 @@ public class RemoteRobotPiSocket extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        request(Mode.DISCONNECT);
-//        request(Side.EXIT);
-
-//        Message message = Message.obtain(connectionHandler);
-//        message.what = ConnectionHandler.MessageCode.CLASS_CONNECTION; // EventClass CONNECTION
-//        message.arg1 = -1; // EventAction CONNECT
-//
-//        connectionHandler.sendMessage(message);
+        if(connectionHandler.isSocketActive())
+            request(Mode.DISCONNECT);
     }
 
 

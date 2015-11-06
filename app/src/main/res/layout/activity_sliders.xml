@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <io.github.z3ntu.remoterobot.seekbar.VerticalSeekbar
-    android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/leftSeekBar"
         android:layout_alignParentEnd="true"
@@ -13,7 +13,6 @@
         android:progress="100"
         android:thumb="@drawable/thumb_image"
         android:layout_below="@+id/servo" />
-
     <io.github.z3ntu.remoterobot.seekbar.VerticalSeekbar
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -38,7 +37,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RESET ALL"
+        android:text="@string/reset_all"
         android:id="@+id/reset_all"
         android:layout_below="@+id/servo"
         android:layout_centerHorizontal="true"
@@ -48,7 +47,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset speed"
+        android:text="@string/reset_speed"
         android:id="@+id/reset_speed"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

@@ -1,12 +1,17 @@
 language: android
 jdk: oraclejdk7
 sudo: false
-
 android:
   components:
-    - tools
-    - build-tools-23.0.1
-    - android-23
-    - extra-android-m2repository
-
+  - tools
+  - build-tools-23.0.2
+  - android-23
+  - extra-android-m2repository
 script: gradle build
+deploy:
+  provider: releases
+  api_key:
+    secure: FaQJZGSuC7ky++/yaNvvD5E+ulcX/fycizb+rMrqsnaVqZu3R82KWQxkv9hGLFqYAzqsGYKfCUT0xjNacUz3v5wTc4o+8JcxGnvDw2zva5k6H+7gAYEELckdABVEMiVQKl4ZuIR5XK71atld3BNZF05ZusQaXkooBkizLis2SCX/YqIOArw9pEnAAHuqSbnYNOtuDnIiQk23iuxmm/iUAPd09RQKLEcj5ZVFDtD5QAvpc0qn5zrDhv/evjS8Nq45jVXkatH3A+p8Fw6zU4H460SZA1ZlozlNADyAuITuL79TAuMTmDYpslBLtnSaRX3/v7ribO6/sQ8Vom5b1o/JS4wJ4oIFSE5pTq4WcCCoSoVCVPR7YGLuiz+20VuHFSBYqHvQPnNwzsIQXB6gkSSE0vdshqXoo0pUPcrw80gBUJGvGCHK94NeScTlOlQ31lYE8J3Kej95d1fEIoB4D8+8Xh6PLUn2zAVN3/7q3UqoTxopGXUKn4q5t3pvwfW5Fw7/u3iHc2qIqlXlyD2I370cjwwtzFbgVPgkj066nDA5IQtzrXfH3xIS5HXPMVTrJXAo/+cztfhcYaEmlviX+aymtdYN02+hoJj6OOJ4CGA2YyNXkAz/JG132lkx0XkhIm3/0bxDj+LK7WrrdTwKHfHhX1UkWW8EOr9yrzPvyY81hBY=
+  file: app/build/outputs/apk/app-debug.apk
+  on:
+    repo: z3ntu/robotpi_client_android
